@@ -115,7 +115,7 @@ class GalleryController extends Controller
     {
         $item = Gallery::findOrFail($id);
         $item->delete();
-        Storage::disk('s3')->delete($item->image);
+        \Storage::disk('s3')->delete($item->image);
 
         return redirect()->route('gallery.index');
     }
