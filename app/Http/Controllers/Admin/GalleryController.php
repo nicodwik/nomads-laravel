@@ -50,7 +50,7 @@ class GalleryController extends Controller
     {
         $data = $request->all();
         $data['image'] = $request->file('image')->store(
-            'assets/gallery', 'public'
+            'packages' , 's3', 'public'
         );
 
         Gallery::create($data);

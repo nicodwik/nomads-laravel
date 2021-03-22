@@ -30,7 +30,7 @@
                                         <th>{{$item->travel_package->title}}</th> 
                                         {{-- relasi dengan GalleryController --}}
                                         <th>
-                                            <img src="{{Storage::url($item->image)}}" style="width: 150px;" class="img-thumbnail">    
+                                            <img src="{{Storage::disk('s3')->url($item->image)}}" style="width: 150px;" class="img-thumbnail">    
                                         </th>
                                         
                                         <th>
