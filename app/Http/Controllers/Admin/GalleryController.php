@@ -96,7 +96,7 @@ class GalleryController extends Controller
     {
         $data = $request->all();
         $data['image'] = $request->file('image')->store(
-            'assets/gallery', 'public'
+            'packages', 's3' , 'public'
         );
 
         $item = Gallery::findOrFail($id);
@@ -115,6 +115,7 @@ class GalleryController extends Controller
     {
         $item = Gallery::findOrFail($id);
         $item->delete();
+        Storage::disk('s3')->delete($item->image);
 
         return redirect()->route('gallery.index');
     }
